@@ -1,0 +1,8 @@
+.event {
+  color: rgb(0, 153, 255);
+  font-weight: bold;
+  font-family: "Trebuchet MS";
+  box-sizing: border-box;
+  background: white;
+  border-left: solid rgb(0, 153, 255);
+}
