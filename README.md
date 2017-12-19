@@ -10,6 +10,8 @@ To test with other events objects, change `path` in `event-date.service.ts`
 
 Note: `calendar.component.html` and `calendar.component.css` mostly copy/paste from stack overflow etc
 
+Deployed here: http://calendar-challenge.surge.sh/
+
 ## Angular CLI
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.1.
