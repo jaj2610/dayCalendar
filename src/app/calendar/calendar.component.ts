@@ -8,13 +8,11 @@ import { LayOutDayService } from './lay-out-day.service';
 })
 export class CalendarComponent implements OnInit {
 
-  public events = [];
 
   constructor(private layOutDayService: LayOutDayService) { }
 
   ngOnInit() {
     this.layOutDayService.initData();
-    this.events = this.layOutDayService.eventLayout;
   }
 
 }

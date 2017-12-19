@@ -5,18 +5,17 @@ import { EventDataService } from './event-data.service';
 @Injectable()
 export class LayOutDayService {
   public eventData = {};
-  public eventLayout;
+  public eventLayout = [];
 
   constructor(private eventDataService: EventDataService) { }
   public testEvents = {"-K2rlJ-nkJBtkLHL0QmO":{"end":150,"start":30},"-K2rlKbFfXz3OEoxRBJU":{"end":650,"start":540},"-K2rlLd-VjcZ_rtBlVuM":{"end":620,"start":560},"-K2rlMb_GD98QiMk8zGF":{"end":700,"start":630}};
 
   public initData() {
-    // this.eventDataService.getData().subscribe(data => { this.eventData = data; this.setLayout(this.eventData); }, error => console.log(error));
-    this.setLayout(this.testEvents);
+    this.eventDataService.getData().subscribe(data => { this.eventData = data; this.setLayout(); }, error => console.log(error));
   }
 
-  private setLayout(events) {
-    this.eventLayout = this.layOutDay(events);
+  private setLayout() {
+    this.eventLayout = this.layOutDay(this.eventData);
   }
 
   /**
@@ -31,7 +30,6 @@ export class LayOutDayService {
   *                start and end time. The object should be laid out so that there are no overlapping
   *                events.
   *
-  * function layOutDay(events) {...}
   */
   public layOutDay(events) {
     const totalWidth = 600; // total event width available

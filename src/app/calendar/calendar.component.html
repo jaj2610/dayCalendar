@@ -28,7 +28,7 @@
     </div>
 
     <div id="calender" class="left">
-      <span *ngFor="let event of events">
+      <span *ngFor="let event of layOutDayService.eventLayout">
         <app-event [event]="event"></app-event>
       </span>
     </div>
