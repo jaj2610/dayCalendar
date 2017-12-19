@@ -8,9 +8,17 @@ Calendar exercise
 
 To test with other events objects, change `path` in `event-date.service.ts`
 
-Note: `calendar.component.html` and `calendar.component.css` mostly copy/paste from stack overflow etc
-
 Deployed here: http://calendar-challenge.surge.sh/
+
+## Details
+
+`Part I` logic can be found in [lay-out-day.service.ts](src/app/calendar/lay-out-day.service.ts)
+
+`Part II` is [event-data.service.ts](src/app/calendar/event-data.service.ts) and used in  [lay-out-day.service.ts](src/app/calendar/lay-out-day.service.ts)
+
+`Part III` event styling / placement [event.component.ts](src/app/calendar/event/event.component.ts)
+
+Note: [calendar.component.html](src/app/calendar/calendar.component.html) and [calendar.component.css](src/app/calendar/calendar.component.css) mostly copy/paste from stack overflow
 
 ## Angular CLI
 
