@@ -9,7 +9,7 @@ import { LayOutDayService } from './lay-out-day.service';
 export class CalendarComponent implements OnInit {
 
 
-  constructor(private layOutDayService: LayOutDayService) { }
+  constructor(public layOutDayService: LayOutDayService) { }
 
   ngOnInit() {
     this.layOutDayService.initData();
