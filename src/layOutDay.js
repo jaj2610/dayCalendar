@@ -36,14 +36,66 @@ eventObject = {
   */
 function layOutDay(events) {
   const totalWidth = 600; // total event width available
+  const startTime = 0;
+  const endTime = 720;
+  let eventLayout = [];
+  let times = [];
 
-  // TODO: find conflicts
+  // find conflicts
 
-  // TODO: set width based on number of conflicts (totalWidth/conflicts)
+  // push event id into each time
+  for (let i in events) {
+    for (let j = events[i].start; j < events[i].end; j++) {
+      times[j] = times[j] || []; // ensure initialization
+      times[j].push(i);
+    }
+  }
 
-  // TODO: set leftPosition based on number of conflict / start time
+  // find number of conflicts each event has
+  times.forEach(time => {
+    if (time.length > 1) {
+      let horizontalStep = 0;
+      time.forEach(event => {
+        // store largest # of conflicts for each event
+        if (!events[event].conflicts || time.length > events[event].conflicts)
+        {
+          events[event].conflicts = time.length;
+        }
 
-  // TODO: set topPosition based on start time
+        // give event a horizontal placement to later determine leftPosition
+        // logic needs work - may not work with events in certain order
+        if (!events[event].horizontal) {
+          events[event].horizontal = horizontalStep;
+        }
 
-  return events;
+        horizontalStep++;
+      });
+    }
+  });
+
+  for (let event in events) {
+    let finalEvent = {};
+    finalEvent.id = event;
+    finalEvent.start = events[event].start;
+    finalEvent.end = events[event].end;
+
+    if (events[event].conflicts) {
+      finalEvent.width = totalWidth / events[event].conflicts;
+    } else {
+      finalEvent.width = totalWidth;
+    }
+
+    if (events[event].horizontal) {
+      finalEvent.leftPosition = finalEvent.width * events[event].horizontal;
+    } else {
+      finalEvent.leftPosition = 0;
+    }
+
+
+    finalEvent.topPosition = events[event].start;
+
+    eventLayout.push(finalEvent);
+  }
+
+  return eventLayout;
 }
